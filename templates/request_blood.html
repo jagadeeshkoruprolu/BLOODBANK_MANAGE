@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Request Blood</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Request Blood</h2>
+        <form method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Mobile Number:</label>
+            <input type="text" name="mobile" required pattern="[0-9]{10}" placeholder="10-digit number">
+
+            <label>Address:</label>
+            <textarea name="address" required></textarea>
+
+            <label>Blood Group:</label>
+            <select class="gro" name="blood_group">
+                {% for group in blood_data %}
+                <option value="{{ group }}">{{ group }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Quantity:</label>
+            <input type="number" name="quantity" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <button type="submit">Submit Request</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <p class="flash-message">{{ messages[0] }}</p>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

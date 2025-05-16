@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blood Bank</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Available Blood Stock</h1>
+    <div class="info-section">
+        <h3>About Blood Donation</h3>
+        <p>
+            Blood donation is a simple, safe, and life-saving act. Every two seconds, someone needs blood,
+            and one donation can save up to three lives. Blood cannot be manufactured – it can only come from generous donors like you.
+        </p>
+
+        <h3>Why Regular Donation Matters</h3>
+        <p>
+            Regular blood donations ensure a stable and sufficient blood supply at all times.
+            It's especially critical during emergencies, surgeries, childbirth, and for patients with chronic diseases like cancer and anemia.
+        </p>
+
+        <h3>User Awareness</h3>
+        <ul>
+            <li>Donate blood once every 3 months if you're healthy and aged 18–60.</li>
+            <li>Stay hydrated, eat a healthy meal, and get enough rest before donating.</li>
+            <li>Spread awareness among friends and family to increase the number of donors.</li>
+            <li>Join local donation drives or register as a regular donor with hospitals and NGOs.</li>
+        </ul>
+
+        <p><strong>Together, we can save more lives!</strong></p>
+    </div>
+    <table>
+        <tr><th>Blood Group</th><th>Units Available</th></tr>
+        {% for group, qty in blood_data.items() %}
+        <tr><td>{{ group }}</td><td>{{ qty }}</td></tr>
+        {% endfor %}
+    </table>
+
+    <div style="text-align: center;">
+        <a href="/login">Admin Login</a> |
+        <a href="/request">Request Blood</a>
+    </div>
+</body>
+</html>

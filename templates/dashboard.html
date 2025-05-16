@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Admin Dashboard - Blood Stock</h2>
+
+        <form method="POST">
+            {% for group, value in blood_data.items() %}
+                <label>{{ group }}:</label>
+                <input type="number" name="{{ group }}" value="{{ value }}" required>
+            {% endfor %}
+            <button type="submit">Update Stock</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <p class="flash-message">{{ messages[0] }}</p>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="info-section">
+        <h3>Why Donate Blood?</h3>
+        <p>
+            Every two seconds, someone needs blood. A single donation can save up to three lives.
+            It's safe, easy, and essential. Blood donations are needed for surgeries, cancer treatment, chronic illnesses, and trauma.
+        </p>
+
+        <h3>Who Can Donate?</h3>
+        <ul>
+            <li>Age 18–65 years</li>
+            <li>Weight over 50 kg</li>
+            <li>No serious health issues in recent months</li>
+        </ul>
+
+        <h3>Encourage Awareness</h3>
+        <p>
+            Spread awareness in your community. Regular donors help ensure a stable supply for emergencies.
+        </p>
+    </div>
+</body>
+</html>
